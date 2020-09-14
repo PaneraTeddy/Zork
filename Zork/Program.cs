@@ -16,14 +16,11 @@ namespace Zork
 
         private static Commands ToCommand(string commandString)
         {
-            try
-            {
-                return Enum.Parse<Commands>(commandString, true);
-            }
-            catch
-            {
-                return Commands.UNKNOWN;
-            }
+
+                return Enum.TryParse<Commands>(commandString, true, 
+                    out Commands result) ? result: Commands.UNKNOWN;
+
+ 
         }
     }
 }
