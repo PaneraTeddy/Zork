@@ -5,20 +5,33 @@ namespace Zork
 {
     class Program
     {
-        private static string[] Rooms = { "Forest", "West of the House", "Behind House", "Clearing", "Canyon View" };
-        private static int currentRoom = 1;
+        private static readonly string[,] Rooms = 
+        {
+            { "Rocky Trail", "South of House", "Canyon View" },
+            { "Forest", "West of House", "Behind House" },
+            { "Dense Woods", "North of House", "Clearing" },
+
+        };
+
+        private static (int row, int col) Location;
+
         private static bool moveIsVaild = false;
 
         static void Main(string[] args)
         {
+            Location.col = 1;
+            Location.row = 1;
+
             Console.WriteLine("Welcome to Zork!");
 
             Commands command = Commands.UNKNOWN;
             while(command != Commands.QUIT)
             {
-                Console.WriteLine(Rooms[currentRoom]);
+                Console.WriteLine(Rooms[Location.row, Location.col]);
                 Console.Write("> ");
                 command = ToCommand(Console.ReadLine().Trim());
+
+                // check if the move is vaild
                 moveIsVaild = CanMove(command);
                 // Console.Write("You at : " + currentRoom + "moveIsVaild :" + moveIsVaild + "\n");
                 string outputString;
@@ -30,11 +43,31 @@ namespace Zork
                         break;
 
                     case Commands.NORTH:
+                        if (moveIsVaild == true)
+                        {
+                            Location.row++;
+                            outputString = "You moved " + command + ".";
+                        }
+                        else
+                        {
+                            outputString = "The way is shut!";
+                        }
+                        break;
                     case Commands.SOUTH:
+                        if (moveIsVaild == true)
+                        {
+                            Location.row--;
+                            outputString = "You moved " + command + ".";
+                        }
+                        else
+                        {
+                            outputString = "The way is shut!";
+                        }
+                        break;
                     case Commands.EAST:
                         if (moveIsVaild == true)
-                        { 
-                            currentRoom ++;
+                        {
+                            Location.col++;
                             outputString = "You moved " + command + ".";
                         }
                         else
@@ -45,8 +78,8 @@ namespace Zork
                             
                     case Commands.WEST:
                         if (moveIsVaild == true)
-                        { 
-                            currentRoom --;
+                        {
+                            Location.col--;
                             outputString = "You moved " + command + ".";
                         }
                         else
@@ -72,11 +105,7 @@ namespace Zork
             switch(command)
             {
                 case Commands.NORTH:
-                case Commands.SOUTH:
-                    return false;
-                    
-                case Commands.EAST:
-                    if (currentRoom + 1 >= Rooms.Length)
+                    if (Location.row + 1 >= Rooms.GetLength(0))
                     {
                         return false;
                     }
@@ -84,8 +113,29 @@ namespace Zork
                     {
                         return true;
                     }
+
+                case Commands.SOUTH:
+                    if (Location.row - 1 <= -1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+
+                case Commands.EAST:
+                    if (Location.col + 1 >= Rooms.GetLength(1))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+
                 case Commands.WEST:
-                    if (currentRoom - 1 <= -1)
+                    if (Location.col - 1 <= -1)
                     {
                         return false;
                     }
