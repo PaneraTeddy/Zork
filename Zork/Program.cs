@@ -17,9 +17,10 @@ namespace Zork
             while(command != Commands.QUIT)
             {
                 Console.WriteLine(Rooms[currentRoom]);
+                Console.Write("> ");
                 command = ToCommand(Console.ReadLine().Trim());
                 moveIsVaild = CanMove(command);
-                
+                // Console.Write("You at : " + currentRoom + "moveIsVaild :" + moveIsVaild + "\n");
                 string outputString;
                 switch (command)
                 {
@@ -45,7 +46,7 @@ namespace Zork
                     case Commands.WEST:
                         if (moveIsVaild == true)
                         { 
-                            currentRoom ++;
+                            currentRoom --;
                             outputString = "You moved " + command + ".";
                         }
                         else
@@ -68,8 +69,6 @@ namespace Zork
            
         private static bool CanMove (Commands command)
         {   
-            int moveBond = Rooms.Length;
-
             switch(command)
             {
                 case Commands.NORTH:
@@ -77,22 +76,22 @@ namespace Zork
                     return false;
                     
                 case Commands.EAST:
-                    if (currentRoom + 1 >= moveBond)
+                    if (currentRoom + 1 >= Rooms.Length)
                     {
                         return false;
                     }
                     else
                     {
-                        return false;
+                        return true;
                     }
                 case Commands.WEST:
-                    if (currentRoom - 1 < moveBond)
+                    if (currentRoom - 1 <= -1)
                     {
                         return false;
                     }
                     else
                     {
-                        return false;
+                        return true;
                     }
                 default:
                    return false;
