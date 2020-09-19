@@ -5,7 +5,7 @@ namespace Zork
 {
     class Program
     {
-        private static string[] Rooms = { "Forest", " West of the House", "Behind House", "Clearing", "Canyon View" };
+        private static string[] Rooms = { "Forest", "West of the House", "Behind House", "Clearing", "Canyon View" };
         private static int currentRoom = 1;
         private static bool moveIsVaild = false;
 
