@@ -2,11 +2,27 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Data.Common;
+using System.IO;
+using System.Linq;
 
 namespace Zork
 {
     class Program
     {
+        static Program()
+        {
+            RoomMap = new Dictionary<string, Room>();
+            foreach (Room room in Rooms)
+            {
+                RoomMap[room.Name] = room;
+            }
+        }
+
+        private enum Fields
+        {
+            Name = 0,
+            Description
+        }
         private static Room CurrentRoom
         {
             get
@@ -16,16 +32,22 @@ namespace Zork
 
         }
 
-        // private static (int row, int col) Location;
-        // private static bool moveIsVaild = false;
+        private enum CommandLineArguments
+        {
+            RoomsFilename = 0
+        }
+
+
         static void Main(string[] args)
         {
             // Location.col = 1;
             // Location.row = 1;
+            const string defaultRoomsFilename = "Rooms.txt";
+            string roomsFilename = (args.Length > 0 ? args[(int)CommandLineArguments.RoomsFilename] : defaultRoomsFilename);
+
+            InitializeRoomDescriptions(roomsFilename);
 
             Console.WriteLine("Welcome to Zork!");
-            InitializeRoomDescriptions();
-
             Room previousRoom = null;
             Commands command = Commands.UNKNOWN;
             while(command != Commands.QUIT)
@@ -95,34 +117,22 @@ namespace Zork
 
             return isValidMove;
         }
-        private static bool IsDirection(Commands command)
+
+        private static void InitializeRoomDescriptions(string roomsFilename)
         {
-            return Directions.Contains(command);
-        }
+            const string fieldDelimiter = "##";
+            const int expectedFieldCount = 2;
 
-        private static Commands ToCommand(string commandString) => 
-        (Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN);
+            var roomQueary = from line in File.ReadLines(roomsFilename)
+                             let fields = line.Split(fieldDelimiter)
+                             where fields.Length == expectedFieldCount
+                             select (Name: fields[(int)Fields.Name],
+                                     Description: fields[(int)Fields.Description]);
 
-        private static void InitializeRoomDescriptions()
-        {
-            var roomMap = new Dictionary<string, Room>();
-
-            foreach (Room room in Rooms)
+            foreach (var (Name, Description) in roomQueary)
             {
-                roomMap[room.Name] = room;
+                RoomMap[Name].Description = Description;
             }
-
-            roomMap["Rocky Trail"].Description = "You are on a rock-strewn trail.";
-            roomMap["South of House"].Description = "You are facing the south side of a white house. There is no door here, and all the windows are barred.";
-            roomMap["Canyon View"].Description = "You are at the top of the great canyon on its south wall.";
-
-            roomMap["Forest"].Description = "This is a forest with trees in all direction around you";
-            roomMap["West of House"].Description = "This is an open field west of a white house, with a boarded front door";
-            roomMap["Behind House"].Description = "You are behind the white house. In one cornner of the house there is a small window which is slightly ajar";
-
-            roomMap["Dense Woods"].Description = "This is a dimly lit forest, with large trees all around. To the east, there appears to be sunlight.";
-            roomMap["North of House"].Description = "You are facing the north side of a white house. There is no door here, and all the windowss are barred."; // south
-            roomMap["Clearing"].Description = " You are in a clearing, with a forest surrounding you on the west and south.";
         }
 
         private static readonly Room[,] Rooms = {
@@ -140,7 +150,12 @@ namespace Zork
             Commands.WEST
         };
 
+        private static readonly Dictionary<string, Room> RoomMap;
         private static (int Row, int Column) Location = (1, 1);
+        private static bool IsDirection(Commands command) => Directions.Contains(command);
+        private static Commands ToCommand(string commandString) =>
+        (Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN);
+
     }
    
 }
