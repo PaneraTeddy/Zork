@@ -1,23 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Data.Common;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace Zork
 {
     class Program
     {
-        static Program()
-        {
-            RoomMap = new Dictionary<string, Room>();
-            foreach (Room room in Rooms)
-            {
-                RoomMap[room.Name] = room;
-            }
-        }
-
         private enum Fields
         {
             Name = 0,
@@ -42,10 +32,10 @@ namespace Zork
         {
             // Location.col = 1;
             // Location.row = 1;
-            const string defaultRoomsFilename = "Rooms.txt";
+            const string defaultRoomsFilename = "Rooms.json";
             string roomsFilename = (args.Length > 0 ? args[(int)CommandLineArguments.RoomsFilename] : defaultRoomsFilename);
 
-            InitializeRoomDescriptions(roomsFilename);
+            InitializeRooms(roomsFilename);
 
             Console.WriteLine("Welcome to Zork!");
             Room previousRoom = null;
@@ -118,29 +108,10 @@ namespace Zork
             return isValidMove;
         }
 
-        private static void InitializeRoomDescriptions(string roomsFilename)
-        {
-            const string fieldDelimiter = "##";
-            const int expectedFieldCount = 2;
+        private static void InitializeRooms(string roomsFilename) =>
+            Rooms = JsonConvert.DeserializeObject<Room[,]>(File.ReadAllText(roomsFilename));
 
-            var roomQueary = from line in File.ReadLines(roomsFilename)
-                             let fields = line.Split(fieldDelimiter)
-                             where fields.Length == expectedFieldCount
-                             select (Name: fields[(int)Fields.Name],
-                                     Description: fields[(int)Fields.Description]);
-
-            foreach (var (Name, Description) in roomQueary)
-            {
-                RoomMap[Name].Description = Description;
-            }
-        }
-
-        private static readonly Room[,] Rooms = {
-            { new Room ("Rocky Trail"), new Room ("South of House"),new Room ("Canyon View") },
-            { new Room("Forest"), new Room("West of House"), new Room("Behind House") },
-            { new Room("Dense Woods"), new Room("North of House"), new Room("Clearing" )},
-
-        };
+        private static Room[,] Rooms;
 
         private static readonly List<Commands> Directions = new List<Commands>
         {
@@ -150,7 +121,6 @@ namespace Zork
             Commands.WEST
         };
 
-        private static readonly Dictionary<string, Room> RoomMap;
         private static (int Row, int Column) Location = (1, 1);
         private static bool IsDirection(Commands command) => Directions.Contains(command);
         private static Commands ToCommand(string commandString) =>
