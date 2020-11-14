@@ -31,6 +31,8 @@ namespace InventoryManager.Windform.Forms
             set
             {
                 mIsWorldLoaded = value;
+                saveToolStripMenuItem.Enabled = IsWorldLoaded;
+                saveAsToolStripMenuItem.Enabled = IsWorldLoaded;
                 MaintabControl.Enabled = IsWorldLoaded;
             }
         }
@@ -65,6 +67,18 @@ namespace InventoryManager.Windform.Forms
                 playerListBox.SelectedItem = ViewModel.Players.FirstOrDefault();
             }
         }
+        private void ItemsAddButton_Click(object sender, EventArgs e)
+        {
+            using (AddItemForm addItemForm = new AddItemForm())
+            {
+                if (addItemForm.ShowDialog() == DialogResult.OK)
+                {
+                    Item item = new Item { Name = addItemForm.ItemName };
+                    ViewModel.Items.Add(item);
+                }
+            }
+        }
+
 
         #region Main Menu
         private void OpenWorldToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,5 +111,6 @@ namespace InventoryManager.Windform.Forms
         private WorldViewModel mViewModel;
         private bool mIsWorldLoaded;
 
+        
     }
 }

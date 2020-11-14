@@ -19,10 +19,12 @@
 
   "Items": [
     {
-      "Name": "Book"
+      "Name": "Book",
+      "Weight": "10"
     },
     {
-      "Name": "Lantern"
+      "Name": "Lantern",
+      "Weight": "5"
     }
   ]
 }
