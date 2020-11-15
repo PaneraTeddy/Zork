@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace InventoryManager.Data
 {
-    public class World
+    public class World : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public List<Player> Players { get; set; }
+
         public List<Item> Items { get; set; }
 
         public World()
@@ -22,6 +24,7 @@ namespace InventoryManager.Data
             foreach (Player player in Players)
             {
                 player.BuildInventoryFromNames(Items);
+                player.BuildEquippedItemNamesFromNames(Items);
             }
         }
     }
