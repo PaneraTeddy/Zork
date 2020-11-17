@@ -1,0 +1,182 @@
+{
+  "Rooms": [
+    {
+      "Name": "Rocky Trail",
+      "Description": "You are on a rock-strewn trail"
+    },
+
+    {
+      "Name": "South of House",
+      "Description": "You are facing the south side of a white house.There is no door here, and the windows are barred.",
+      "ListOfNeighborsName": [
+        "West of House",
+        "Behind House"
+      ],
+      "NeighborDirection": {
+        "East": "Behind House",
+        "West": "West of House"
+      }
+    },
+
+    {
+      "Name": "Canyon View",
+      "Description": "You are at the top of the Great Canyon on its south wall."
+    },
+
+    {
+      "Name": "Forest",
+      "Description": "This is a forest, with trees in all directions around you."
+    },
+
+    {
+      "Name": "West of House",
+      "Description": "This is an open field west of a white house, with a boarded front door",
+      "ListOfNeighborsName": [
+        "North of House",
+        "South of House",
+        "Forest 1"
+      ],
+      "NeighborDirection": {
+        "North": "North of House",
+        "South": "South of House",
+        "West": "Forest 1"
+      }
+    },
+    {
+      "Name": "Behind House",
+      "Description": "You are behind the white house. In one corner of the house there is a small window which is slightly ajar.",
+      "ListOfNeighborsName": [
+        "North of House",
+        "Clearing",
+        "South of House"
+      ],
+      "NeighborDirection": {
+        "North": "North of House",
+        "East": "Clearing",
+        "South": "South of House"
+      }
+    },
+    {
+      "Name": "Dense Woods",
+      "Description": "This is a dimly lit forest, with large tree all around. To the east, there appears to be sunlight."
+    },
+    {
+      "Name": "North of House",
+      "Description": "You are facing the north sie of a white house. There is no door here, and all the windows are barred.",
+      "ListOfNeighborsName": [
+        "Forest 2",
+        "Behind House",
+        "West of House"
+      ],
+      "NeighborDirection": {
+        "North": "Forest 2",
+        "East": "Behind House",
+        "West": "West of House"
+      }
+    },
+    {
+      "Name": "Clearing",
+      "Description": "You are in a clearing, with a forest surrounding you on the west and south.",
+      "ListOfNeighborsName": [
+        "Forest 3",
+        "Forest 2"
+      ],
+      "NeighborDirection": {
+        "West": "Forest 2",
+        "South": "Forest 3"
+      }
+    },
+
+    {
+      "Name": "Forest 1",
+      "Description": "This is a forest, with trees in all directions around you.",
+      "ListOfNeighborsName": [
+        "West of House",
+        "Forest 3"
+      ],
+      "NeighborDirection": {
+        "South": "Forest 3",
+        "East": "West of House"
+      }
+    },
+
+    {
+      "Name": "Forest 2",
+      "Description": "This is a dimly lit forest, with large trees all around. One particularly large tree with some low branches stands here.",
+      "ListOfNeighborsName": [
+        "Clearing"
+      ],
+      "NeighborDirection": {
+        "South": "Clearing",
+        "East": "Clearing"
+      }
+    },
+
+    {
+      "Name": "Forest 3",
+      "Description": "This is a dimly lit forest, with large trees all around.  To the east, there appears to be sunlight.",
+      "ListOfNeighborsName": [
+        "Clearing",
+        "South of House"
+      ],
+      "NeighborDirection": {
+        "North": "South of House",
+        "East": "Clearing"
+      }
+    }
+
+  ],
+
+  "Neighbors": [
+    {
+      "Name": "West of House"
+    },
+    {
+      "Name": "North of House"
+    },
+    {
+      "Name": "South of House"
+    },
+    {
+      "Name": "Behind House"
+    },
+    {
+      "Name": "Forest 1"
+    },
+    {
+      "Name": "Forest 2"
+    },
+    {
+      "Name": "Forest 3"
+    },
+    {
+      "Name": "Clearing"
+    }
+
+  ],
+
+  "Items": [
+    {
+      "Name": "Book",
+      "Weight": 10
+    },
+    {
+      "Name": "Lantern",
+      "Weight": 20
+    },
+    {
+      "Name": "Shield",
+      "Weight": 50
+    },
+    {
+      "Name": "Sword",
+      "Weight": 35
+    },
+    {
+      "Name": "Helmet",
+      "Weight": 25
+    }
+  ]
+
+}
+
