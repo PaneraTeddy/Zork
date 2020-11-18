@@ -8,7 +8,6 @@ namespace ZorkBuilder.Data
         public List<Room> Rooms{ get; set; }
         public List<Neighbors> Neighbors { get; set; }
         public List<Item> Items { get; set; }
-        public Player player { get; set; }
 
         public string WelcomeMessage { get; set; }
 

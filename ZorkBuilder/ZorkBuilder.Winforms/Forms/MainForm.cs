@@ -78,9 +78,20 @@ namespace ZorkBuilder.Winforms.Forms
             }
 
         }
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e) => ViewModel.SaveWorld();
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ViewModel.Filename = saveFileDialog.FileName;
+                ViewModel.SaveWorld();
+            }
+        }
 
         #endregion
 
+        #region List Management
         private void RoomAddButton_Click(object sender, EventArgs e)
         {
             using (AddRoomForm addRoomForm = new AddRoomForm())
@@ -111,7 +122,18 @@ namespace ZorkBuilder.Winforms.Forms
             }
         }
 
-        private void ItemAddButton_Click(object sender, EventArgs e)
+        private void RoomsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            roomDeleteButoon.Enabled = roomsListBox.SelectedItem != null;
+            Room selectedRoom = roomsListBox.SelectedItem as Room;
+            foreach (var control in mNeighborsControlMap.Values)
+            {
+                control.Room = selectedRoom;
+            }
+
+        }
+
+        private void AddItemButton_Click(object sender, EventArgs e)
         {
             using (AddItemForm addItemForm = new AddItemForm())
             {
@@ -123,25 +145,25 @@ namespace ZorkBuilder.Winforms.Forms
             }
         }
 
-        private void ItemDeleteButton_Click(object sender, EventArgs e)
+        private void DeleteItemButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Delete this Item?", AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                ViewModel.Items.Remove((Item)itemListBox.SelectedItem);
-                itemListBox.SelectedItem = ViewModel.Items.FirstOrDefault();
+                ViewModel.Items.Remove((Item)itemsListBox.SelectedItem);
+                itemsListBox.SelectedItem = ViewModel.Items.FirstOrDefault();
             }
-
         }
 
-        private void RoomsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void DeleteNeighborButton_Click(object sender, EventArgs e)
         {
-            roomDeleteButoon.Enabled = roomsListBox.SelectedItem != null;
-            Room selectedRoom = roomsListBox.SelectedItem as Room;
-            foreach (var control in mNeighborsControlMap.Values)
+            if (MessageBox.Show("Delete this Neighbor?", AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                control.Room = selectedRoom;
+                ViewModel.Neighbors.Remove((Neighbors)neighborsNameListBox.SelectedItem);
+                neighborsNameListBox.SelectedItem = ViewModel.Neighbors.FirstOrDefault();
             }
 
         }
+        #endregion
+
     }
 }

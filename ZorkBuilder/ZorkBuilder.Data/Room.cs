@@ -28,8 +28,6 @@ namespace ZorkBuilder.Data
         [JsonIgnore]
         public List<Neighbors> ListOfNeighbors { get; set; }
 
-
-
         public Room(string name = null, string description = null, List<string> listOfNeighborsNames = null, Dictionary<Directions, String> neighborLocationNames = null)
         {
             Name = name;
@@ -90,15 +88,15 @@ namespace ZorkBuilder.Data
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            Room player = (Room)value;
-            JToken neighborLocationNamesToken = JToken.FromObject(player.NeighborLocations.ToDictionary(pair => pair.Value.Name), serializer);
+            Room room = (Room)value;
+            JToken neighborLocationNamesToken = JToken.FromObject(room.NeighborLocations.ToDictionary(pair => pair.Value.Name), serializer);
 
             JObject playerObject = new JObject
             {
-                { nameof(Room.Name), player.Name },
-                { nameof(Room.Description), player.Description },
+                { nameof(Room.Name), room.Name },
+                { nameof(Room.Description), room.Description },
                 { nameof(Room.NeighborLocations), neighborLocationNamesToken },
-                { nameof(Room.ListOfNeighbors), JToken.FromObject(player.ListOfNeighbors.Select(neighbor => neighbor.Name), serializer)},
+                { nameof(Room.ListOfNeighbors), JToken.FromObject(room.ListOfNeighbors.Select(neighbor => neighbor.Name), serializer)},
             };
 
             playerObject.WriteTo(writer);

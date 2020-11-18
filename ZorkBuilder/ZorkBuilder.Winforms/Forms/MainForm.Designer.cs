@@ -44,24 +44,21 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.welcomeTabPage = new System.Windows.Forms.TabPage();
-            this.newMessageTextBox = new System.Windows.Forms.TextBox();
-            this.newMessageLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.welcomeMessageOkButton = new System.Windows.Forms.Button();
             this.welcomeMessageEditButton = new System.Windows.Forms.Button();
             this.welcomMessageTextBox = new System.Windows.Forms.TextBox();
             this.worldViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.currentMessageLabel = new System.Windows.Forms.Label();
-            this.startLocationTabPage = new System.Windows.Forms.TabPage();
-            this.currentLocationTextBox = new System.Windows.Forms.TextBox();
-            this.currenLocationLabel = new System.Windows.Forms.Label();
-            this.roomsListBox2 = new System.Windows.Forms.ListBox();
-            this.roomsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomsTabPage = new System.Windows.Forms.TabPage();
+            this.StartLocationGroupBox = new System.Windows.Forms.GroupBox();
+            this.startLocationTextBox = new System.Windows.Forms.TextBox();
+            this.NeighborsListGroupBox = new System.Windows.Forms.GroupBox();
+            this.neighborsListBox = new System.Windows.Forms.ListBox();
+            this.listOfNeighborsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.roomsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomSaveButton = new System.Windows.Forms.Button();
-            this.southNeighborsControl = new ZorkBuilder.Winforms.Controls.NeighborsControl();
             this.northNeighborsControl = new ZorkBuilder.Winforms.Controls.NeighborsControl();
-            this.eastNeighborsControl = new ZorkBuilder.Winforms.Controls.NeighborsControl();
-            this.westNeighborsControl = new ZorkBuilder.Winforms.Controls.NeighborsControl();
             this.roomDeleteButoon = new System.Windows.Forms.Button();
             this.roomAddButton = new System.Windows.Forms.Button();
             this.roomEditButton = new System.Windows.Forms.Button();
@@ -71,35 +68,41 @@
             this.roomNameTextBox = new System.Windows.Forms.TextBox();
             this.roomsListBox = new System.Windows.Forms.ListBox();
             this.neighborLocationgroupBox = new System.Windows.Forms.GroupBox();
-            this.itemsTabPage = new System.Windows.Forms.TabPage();
-            this.itemSaveButton = new System.Windows.Forms.Button();
-            this.itemDeleteButton = new System.Windows.Forms.Button();
-            this.itemAddButton = new System.Windows.Forms.Button();
-            this.itemEditButtom = new System.Windows.Forms.Button();
-            this.weightLabel = new System.Windows.Forms.Label();
-            this.weightTextBox = new System.Windows.Forms.TextBox();
+            this.eastNeighborsControl = new ZorkBuilder.Winforms.Controls.NeighborsControl();
+            this.westNeighborsControl = new ZorkBuilder.Winforms.Controls.NeighborsControl();
+            this.southNeighborsControl = new ZorkBuilder.Winforms.Controls.NeighborsControl();
+            this.neighborsItemsTabPage = new System.Windows.Forms.TabPage();
+            this.itemsGroupBox = new System.Windows.Forms.GroupBox();
+            this.deleteItemButton = new System.Windows.Forms.Button();
+            this.addItemButton = new System.Windows.Forms.Button();
+            this.itemsListBox = new System.Windows.Forms.ListBox();
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.itemWeightLabel = new System.Windows.Forms.Label();
+            this.itemWeightextBox = new System.Windows.Forms.TextBox();
+            this.itemNameLabel = new System.Windows.Forms.Label();
             this.itemNameTextBox = new System.Windows.Forms.TextBox();
-            this.itemListBox = new System.Windows.Forms.ListBox();
-            this.worldBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.listOfNeighborsNamebindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.NeighborsListGroupBox = new System.Windows.Forms.GroupBox();
-            this.neighborsListBox = new System.Windows.Forms.ListBox();
+            this.neighborsGroupBox = new System.Windows.Forms.GroupBox();
+            this.deleteNeighborButton = new System.Windows.Forms.Button();
+            this.neighborsNameListBox = new System.Windows.Forms.ListBox();
             this.neighborsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.neighborNameLabel = new System.Windows.Forms.Label();
+            this.neighborNametextBox = new System.Windows.Forms.TextBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.welcomeTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.worldViewModelBindingSource)).BeginInit();
-            this.startLocationTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
             this.roomsTabPage.SuspendLayout();
-            this.itemsTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.worldBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listOfNeighborsNamebindingSource)).BeginInit();
+            this.StartLocationGroupBox.SuspendLayout();
             this.NeighborsListGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listOfNeighborsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
+            this.neighborLocationgroupBox.SuspendLayout();
+            this.neighborsItemsTabPage.SuspendLayout();
+            this.itemsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
+            this.neighborsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.neighborsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,6 +151,7 @@
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
@@ -156,6 +160,7 @@
             | System.Windows.Forms.Keys.S)));
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -200,9 +205,8 @@
             // mainTabControl
             // 
             this.mainTabControl.Controls.Add(this.welcomeTabPage);
-            this.mainTabControl.Controls.Add(this.startLocationTabPage);
             this.mainTabControl.Controls.Add(this.roomsTabPage);
-            this.mainTabControl.Controls.Add(this.itemsTabPage);
+            this.mainTabControl.Controls.Add(this.neighborsItemsTabPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(0, 24);
             this.mainTabControl.Name = "mainTabControl";
@@ -212,8 +216,7 @@
             // 
             // welcomeTabPage
             // 
-            this.welcomeTabPage.Controls.Add(this.newMessageTextBox);
-            this.welcomeTabPage.Controls.Add(this.newMessageLabel);
+            this.welcomeTabPage.Controls.Add(this.label2);
             this.welcomeTabPage.Controls.Add(this.welcomeMessageOkButton);
             this.welcomeTabPage.Controls.Add(this.welcomeMessageEditButton);
             this.welcomeTabPage.Controls.Add(this.welcomMessageTextBox);
@@ -226,22 +229,13 @@
             this.welcomeTabPage.Text = "Welcome Message";
             this.welcomeTabPage.UseVisualStyleBackColor = true;
             // 
-            // newMessageTextBox
+            // label2
             // 
-            this.newMessageTextBox.Location = new System.Drawing.Point(76, 122);
-            this.newMessageTextBox.Multiline = true;
-            this.newMessageTextBox.Name = "newMessageTextBox";
-            this.newMessageTextBox.Size = new System.Drawing.Size(475, 69);
-            this.newMessageTextBox.TabIndex = 5;
-            // 
-            // newMessageLabel
-            // 
-            this.newMessageLabel.AutoSize = true;
-            this.newMessageLabel.Location = new System.Drawing.Point(246, 102);
-            this.newMessageLabel.Name = "newMessageLabel";
-            this.newMessageLabel.Size = new System.Drawing.Size(123, 13);
-            this.newMessageLabel.TabIndex = 4;
-            this.newMessageLabel.Text = "New Welcome Message";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(73, 212);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 6;
             // 
             // welcomeMessageOkButton
             // 
@@ -284,61 +278,12 @@
             this.currentMessageLabel.TabIndex = 0;
             this.currentMessageLabel.Text = "Current Welcome Message";
             // 
-            // startLocationTabPage
-            // 
-            this.startLocationTabPage.Controls.Add(this.currentLocationTextBox);
-            this.startLocationTabPage.Controls.Add(this.currenLocationLabel);
-            this.startLocationTabPage.Controls.Add(this.roomsListBox2);
-            this.startLocationTabPage.Location = new System.Drawing.Point(4, 22);
-            this.startLocationTabPage.Name = "startLocationTabPage";
-            this.startLocationTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.startLocationTabPage.Size = new System.Drawing.Size(624, 317);
-            this.startLocationTabPage.TabIndex = 3;
-            this.startLocationTabPage.Text = "Start Location";
-            this.startLocationTabPage.UseVisualStyleBackColor = true;
-            // 
-            // currentLocationTextBox
-            // 
-            this.currentLocationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.worldViewModelBindingSource, "StartLocation", true));
-            this.currentLocationTextBox.Location = new System.Drawing.Point(156, 31);
-            this.currentLocationTextBox.Name = "currentLocationTextBox";
-            this.currentLocationTextBox.ReadOnly = true;
-            this.currentLocationTextBox.Size = new System.Drawing.Size(177, 20);
-            this.currentLocationTextBox.TabIndex = 3;
-            // 
-            // currenLocationLabel
-            // 
-            this.currenLocationLabel.AutoSize = true;
-            this.currenLocationLabel.Location = new System.Drawing.Point(153, 14);
-            this.currenLocationLabel.Name = "currenLocationLabel";
-            this.currenLocationLabel.Size = new System.Drawing.Size(85, 13);
-            this.currenLocationLabel.TabIndex = 2;
-            this.currenLocationLabel.Text = "Current Location";
-            // 
-            // roomsListBox2
-            // 
-            this.roomsListBox2.DataSource = this.roomsBindingSource;
-            this.roomsListBox2.DisplayMember = "Name";
-            this.roomsListBox2.FormattingEnabled = true;
-            this.roomsListBox2.Location = new System.Drawing.Point(0, 0);
-            this.roomsListBox2.Name = "roomsListBox2";
-            this.roomsListBox2.Size = new System.Drawing.Size(147, 316);
-            this.roomsListBox2.TabIndex = 1;
-            this.roomsListBox2.ValueMember = "Name";
-            // 
-            // roomsBindingSource
-            // 
-            this.roomsBindingSource.DataMember = "Rooms";
-            this.roomsBindingSource.DataSource = this.worldViewModelBindingSource;
-            // 
             // roomsTabPage
             // 
+            this.roomsTabPage.Controls.Add(this.StartLocationGroupBox);
             this.roomsTabPage.Controls.Add(this.NeighborsListGroupBox);
             this.roomsTabPage.Controls.Add(this.roomSaveButton);
-            this.roomsTabPage.Controls.Add(this.southNeighborsControl);
             this.roomsTabPage.Controls.Add(this.northNeighborsControl);
-            this.roomsTabPage.Controls.Add(this.eastNeighborsControl);
-            this.roomsTabPage.Controls.Add(this.westNeighborsControl);
             this.roomsTabPage.Controls.Add(this.roomDeleteButoon);
             this.roomsTabPage.Controls.Add(this.roomAddButton);
             this.roomsTabPage.Controls.Add(this.roomEditButton);
@@ -356,6 +301,58 @@
             this.roomsTabPage.Text = "Rooms";
             this.roomsTabPage.UseVisualStyleBackColor = true;
             // 
+            // StartLocationGroupBox
+            // 
+            this.StartLocationGroupBox.Controls.Add(this.startLocationTextBox);
+            this.StartLocationGroupBox.Location = new System.Drawing.Point(329, 203);
+            this.StartLocationGroupBox.Name = "StartLocationGroupBox";
+            this.StartLocationGroupBox.Size = new System.Drawing.Size(292, 76);
+            this.StartLocationGroupBox.TabIndex = 14;
+            this.StartLocationGroupBox.TabStop = false;
+            this.StartLocationGroupBox.Text = "Start Location";
+            // 
+            // startLocationTextBox
+            // 
+            this.startLocationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.worldViewModelBindingSource, "StartLocation", true));
+            this.startLocationTextBox.Location = new System.Drawing.Point(87, 28);
+            this.startLocationTextBox.Name = "startLocationTextBox";
+            this.startLocationTextBox.ReadOnly = true;
+            this.startLocationTextBox.Size = new System.Drawing.Size(121, 20);
+            this.startLocationTextBox.TabIndex = 0;
+            this.startLocationTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // NeighborsListGroupBox
+            // 
+            this.NeighborsListGroupBox.Controls.Add(this.neighborsListBox);
+            this.NeighborsListGroupBox.Location = new System.Drawing.Point(153, 148);
+            this.NeighborsListGroupBox.Name = "NeighborsListGroupBox";
+            this.NeighborsListGroupBox.Size = new System.Drawing.Size(170, 134);
+            this.NeighborsListGroupBox.TabIndex = 13;
+            this.NeighborsListGroupBox.TabStop = false;
+            this.NeighborsListGroupBox.Text = "List of Neighbors";
+            // 
+            // neighborsListBox
+            // 
+            this.neighborsListBox.DataSource = this.listOfNeighborsBindingSource;
+            this.neighborsListBox.DisplayMember = "Name";
+            this.neighborsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.neighborsListBox.FormattingEnabled = true;
+            this.neighborsListBox.Location = new System.Drawing.Point(3, 16);
+            this.neighborsListBox.Name = "neighborsListBox";
+            this.neighborsListBox.Size = new System.Drawing.Size(164, 115);
+            this.neighborsListBox.TabIndex = 0;
+            this.neighborsListBox.ValueMember = "Name";
+            // 
+            // listOfNeighborsBindingSource
+            // 
+            this.listOfNeighborsBindingSource.DataMember = "ListOfNeighbors";
+            this.listOfNeighborsBindingSource.DataSource = this.roomsBindingSource;
+            // 
+            // roomsBindingSource
+            // 
+            this.roomsBindingSource.DataMember = "Rooms";
+            this.roomsBindingSource.DataSource = this.worldViewModelBindingSource;
+            // 
             // roomSaveButton
             // 
             this.roomSaveButton.Location = new System.Drawing.Point(395, 288);
@@ -364,17 +361,6 @@
             this.roomSaveButton.TabIndex = 12;
             this.roomSaveButton.Text = "&Save";
             this.roomSaveButton.UseVisualStyleBackColor = true;
-            // 
-            // southNeighborsControl
-            // 
-            this.southNeighborsControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.southNeighborsControl.Directions = ZorkBuilder.Data.Directions.South;
-            this.southNeighborsControl.Location = new System.Drawing.Point(416, 191);
-            this.southNeighborsControl.Name = "southNeighborsControl";
-            this.southNeighborsControl.NeighborsName = null;
-            this.southNeighborsControl.Room = null;
-            this.southNeighborsControl.Size = new System.Drawing.Size(121, 48);
-            this.southNeighborsControl.TabIndex = 8;
             // 
             // northNeighborsControl
             // 
@@ -386,28 +372,6 @@
             this.northNeighborsControl.Room = null;
             this.northNeighborsControl.Size = new System.Drawing.Size(121, 48);
             this.northNeighborsControl.TabIndex = 9;
-            // 
-            // eastNeighborsControl
-            // 
-            this.eastNeighborsControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.eastNeighborsControl.Directions = ZorkBuilder.Data.Directions.West;
-            this.eastNeighborsControl.Location = new System.Drawing.Point(340, 115);
-            this.eastNeighborsControl.Name = "eastNeighborsControl";
-            this.eastNeighborsControl.NeighborsName = null;
-            this.eastNeighborsControl.Room = null;
-            this.eastNeighborsControl.Size = new System.Drawing.Size(121, 48);
-            this.eastNeighborsControl.TabIndex = 7;
-            // 
-            // westNeighborsControl
-            // 
-            this.westNeighborsControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.westNeighborsControl.Directions = ZorkBuilder.Data.Directions.East;
-            this.westNeighborsControl.Location = new System.Drawing.Point(492, 115);
-            this.westNeighborsControl.Name = "westNeighborsControl";
-            this.westNeighborsControl.NeighborsName = null;
-            this.westNeighborsControl.Room = null;
-            this.westNeighborsControl.Size = new System.Drawing.Size(121, 48);
-            this.westNeighborsControl.TabIndex = 6;
             // 
             // roomDeleteButoon
             // 
@@ -485,166 +449,218 @@
             this.roomsListBox.Name = "roomsListBox";
             this.roomsListBox.Size = new System.Drawing.Size(147, 316);
             this.roomsListBox.TabIndex = 0;
-            this.roomsListBox.ValueMember = "Name";
+            this.roomsListBox.ValueMember = "Description";
             this.roomsListBox.SelectedIndexChanged += new System.EventHandler(this.RoomsListBox_SelectedIndexChanged);
             // 
             // neighborLocationgroupBox
             // 
+            this.neighborLocationgroupBox.Controls.Add(this.eastNeighborsControl);
+            this.neighborLocationgroupBox.Controls.Add(this.westNeighborsControl);
+            this.neighborLocationgroupBox.Controls.Add(this.southNeighborsControl);
             this.neighborLocationgroupBox.Location = new System.Drawing.Point(329, 12);
             this.neighborLocationgroupBox.Name = "neighborLocationgroupBox";
-            this.neighborLocationgroupBox.Size = new System.Drawing.Size(292, 270);
+            this.neighborLocationgroupBox.Size = new System.Drawing.Size(292, 185);
             this.neighborLocationgroupBox.TabIndex = 2;
             this.neighborLocationgroupBox.TabStop = false;
             this.neighborLocationgroupBox.Text = "Neighbors";
             // 
-            // itemsTabPage
+            // eastNeighborsControl
             // 
-            this.itemsTabPage.Controls.Add(this.itemSaveButton);
-            this.itemsTabPage.Controls.Add(this.itemDeleteButton);
-            this.itemsTabPage.Controls.Add(this.itemAddButton);
-            this.itemsTabPage.Controls.Add(this.itemEditButtom);
-            this.itemsTabPage.Controls.Add(this.weightLabel);
-            this.itemsTabPage.Controls.Add(this.weightTextBox);
-            this.itemsTabPage.Controls.Add(this.label1);
-            this.itemsTabPage.Controls.Add(this.itemNameTextBox);
-            this.itemsTabPage.Controls.Add(this.itemListBox);
-            this.itemsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.itemsTabPage.Name = "itemsTabPage";
-            this.itemsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.itemsTabPage.Size = new System.Drawing.Size(624, 317);
-            this.itemsTabPage.TabIndex = 1;
-            this.itemsTabPage.Text = "Items";
-            this.itemsTabPage.UseVisualStyleBackColor = true;
+            this.eastNeighborsControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.eastNeighborsControl.Directions = ZorkBuilder.Data.Directions.West;
+            this.eastNeighborsControl.Location = new System.Drawing.Point(6, 71);
+            this.eastNeighborsControl.Name = "eastNeighborsControl";
+            this.eastNeighborsControl.NeighborsName = null;
+            this.eastNeighborsControl.Room = null;
+            this.eastNeighborsControl.Size = new System.Drawing.Size(121, 48);
+            this.eastNeighborsControl.TabIndex = 7;
             // 
-            // itemSaveButton
+            // westNeighborsControl
             // 
-            this.itemSaveButton.Location = new System.Drawing.Point(395, 288);
-            this.itemSaveButton.Name = "itemSaveButton";
-            this.itemSaveButton.Size = new System.Drawing.Size(75, 23);
-            this.itemSaveButton.TabIndex = 17;
-            this.itemSaveButton.Text = "&Save";
-            this.itemSaveButton.UseVisualStyleBackColor = true;
+            this.westNeighborsControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.westNeighborsControl.Directions = ZorkBuilder.Data.Directions.East;
+            this.westNeighborsControl.Location = new System.Drawing.Point(165, 71);
+            this.westNeighborsControl.Name = "westNeighborsControl";
+            this.westNeighborsControl.NeighborsName = null;
+            this.westNeighborsControl.Room = null;
+            this.westNeighborsControl.Size = new System.Drawing.Size(121, 48);
+            this.westNeighborsControl.TabIndex = 6;
             // 
-            // itemDeleteButton
+            // southNeighborsControl
             // 
-            this.itemDeleteButton.Location = new System.Drawing.Point(314, 288);
-            this.itemDeleteButton.Name = "itemDeleteButton";
-            this.itemDeleteButton.Size = new System.Drawing.Size(75, 23);
-            this.itemDeleteButton.TabIndex = 16;
-            this.itemDeleteButton.Text = "&Delete";
-            this.itemDeleteButton.UseVisualStyleBackColor = true;
-            this.itemDeleteButton.Click += new System.EventHandler(this.ItemDeleteButton_Click);
+            this.southNeighborsControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.southNeighborsControl.Directions = ZorkBuilder.Data.Directions.South;
+            this.southNeighborsControl.Location = new System.Drawing.Point(87, 125);
+            this.southNeighborsControl.Name = "southNeighborsControl";
+            this.southNeighborsControl.NeighborsName = null;
+            this.southNeighborsControl.Room = null;
+            this.southNeighborsControl.Size = new System.Drawing.Size(121, 48);
+            this.southNeighborsControl.TabIndex = 8;
             // 
-            // itemAddButton
+            // neighborsItemsTabPage
             // 
-            this.itemAddButton.Location = new System.Drawing.Point(233, 288);
-            this.itemAddButton.Name = "itemAddButton";
-            this.itemAddButton.Size = new System.Drawing.Size(75, 23);
-            this.itemAddButton.TabIndex = 15;
-            this.itemAddButton.Text = "&Add";
-            this.itemAddButton.UseVisualStyleBackColor = true;
-            this.itemAddButton.Click += new System.EventHandler(this.ItemAddButton_Click);
+            this.neighborsItemsTabPage.Controls.Add(this.itemsGroupBox);
+            this.neighborsItemsTabPage.Controls.Add(this.neighborsGroupBox);
+            this.neighborsItemsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.neighborsItemsTabPage.Name = "neighborsItemsTabPage";
+            this.neighborsItemsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.neighborsItemsTabPage.Size = new System.Drawing.Size(624, 317);
+            this.neighborsItemsTabPage.TabIndex = 3;
+            this.neighborsItemsTabPage.Text = "Neighbors & Items";
+            this.neighborsItemsTabPage.UseVisualStyleBackColor = true;
             // 
-            // itemEditButtom
+            // itemsGroupBox
             // 
-            this.itemEditButtom.Location = new System.Drawing.Point(152, 288);
-            this.itemEditButtom.Name = "itemEditButtom";
-            this.itemEditButtom.Size = new System.Drawing.Size(75, 23);
-            this.itemEditButtom.TabIndex = 14;
-            this.itemEditButtom.Text = "&Edit";
-            this.itemEditButtom.UseVisualStyleBackColor = true;
+            this.itemsGroupBox.Controls.Add(this.deleteItemButton);
+            this.itemsGroupBox.Controls.Add(this.addItemButton);
+            this.itemsGroupBox.Controls.Add(this.itemsListBox);
+            this.itemsGroupBox.Controls.Add(this.itemWeightLabel);
+            this.itemsGroupBox.Controls.Add(this.itemWeightextBox);
+            this.itemsGroupBox.Controls.Add(this.itemNameLabel);
+            this.itemsGroupBox.Controls.Add(this.itemNameTextBox);
+            this.itemsGroupBox.Location = new System.Drawing.Point(314, 0);
+            this.itemsGroupBox.Name = "itemsGroupBox";
+            this.itemsGroupBox.Size = new System.Drawing.Size(310, 311);
+            this.itemsGroupBox.TabIndex = 3;
+            this.itemsGroupBox.TabStop = false;
+            this.itemsGroupBox.Text = "Items";
             // 
-            // weightLabel
+            // deleteItemButton
             // 
-            this.weightLabel.AutoSize = true;
-            this.weightLabel.Location = new System.Drawing.Point(153, 52);
-            this.weightLabel.Name = "weightLabel";
-            this.weightLabel.Size = new System.Drawing.Size(41, 13);
-            this.weightLabel.TabIndex = 13;
-            this.weightLabel.Text = "Weight";
+            this.deleteItemButton.Location = new System.Drawing.Point(88, 282);
+            this.deleteItemButton.Name = "deleteItemButton";
+            this.deleteItemButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteItemButton.TabIndex = 22;
+            this.deleteItemButton.Text = "&Delete";
+            this.deleteItemButton.UseVisualStyleBackColor = true;
+            this.deleteItemButton.Click += new System.EventHandler(this.DeleteItemButton_Click);
             // 
-            // weightTextBox
+            // addItemButton
             // 
-            this.weightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemsBindingSource, "Weight", true));
-            this.weightTextBox.Location = new System.Drawing.Point(153, 69);
-            this.weightTextBox.Name = "weightTextBox";
-            this.weightTextBox.ReadOnly = true;
-            this.weightTextBox.Size = new System.Drawing.Size(168, 20);
-            this.weightTextBox.TabIndex = 12;
+            this.addItemButton.Location = new System.Drawing.Point(7, 282);
+            this.addItemButton.Name = "addItemButton";
+            this.addItemButton.Size = new System.Drawing.Size(75, 23);
+            this.addItemButton.TabIndex = 21;
+            this.addItemButton.Text = "&Add";
+            this.addItemButton.UseVisualStyleBackColor = true;
+            this.addItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
+            // 
+            // itemsListBox
+            // 
+            this.itemsListBox.DataSource = this.itemsBindingSource;
+            this.itemsListBox.DisplayMember = "Name";
+            this.itemsListBox.FormattingEnabled = true;
+            this.itemsListBox.Location = new System.Drawing.Point(6, 15);
+            this.itemsListBox.Name = "itemsListBox";
+            this.itemsListBox.Size = new System.Drawing.Size(157, 264);
+            this.itemsListBox.TabIndex = 19;
+            this.itemsListBox.ValueMember = "Name";
             // 
             // itemsBindingSource
             // 
             this.itemsBindingSource.DataMember = "Items";
             this.itemsBindingSource.DataSource = this.worldViewModelBindingSource;
             // 
-            // label1
+            // itemWeightLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(153, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Name";
+            this.itemWeightLabel.AutoSize = true;
+            this.itemWeightLabel.Location = new System.Drawing.Point(179, 56);
+            this.itemWeightLabel.Name = "itemWeightLabel";
+            this.itemWeightLabel.Size = new System.Drawing.Size(41, 13);
+            this.itemWeightLabel.TabIndex = 17;
+            this.itemWeightLabel.Text = "Weight";
+            // 
+            // itemWeightextBox
+            // 
+            this.itemWeightextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemsBindingSource, "Weight", true));
+            this.itemWeightextBox.Location = new System.Drawing.Point(179, 73);
+            this.itemWeightextBox.Name = "itemWeightextBox";
+            this.itemWeightextBox.ReadOnly = true;
+            this.itemWeightextBox.Size = new System.Drawing.Size(111, 20);
+            this.itemWeightextBox.TabIndex = 16;
+            // 
+            // itemNameLabel
+            // 
+            this.itemNameLabel.AutoSize = true;
+            this.itemNameLabel.Location = new System.Drawing.Point(179, 16);
+            this.itemNameLabel.Name = "itemNameLabel";
+            this.itemNameLabel.Size = new System.Drawing.Size(35, 13);
+            this.itemNameLabel.TabIndex = 15;
+            this.itemNameLabel.Text = "Name";
             // 
             // itemNameTextBox
             // 
-            this.itemNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemsBindingSource, "Name", true));
-            this.itemNameTextBox.Location = new System.Drawing.Point(153, 29);
+            this.itemNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemsBindingSource, "Weight", true));
+            this.itemNameTextBox.Location = new System.Drawing.Point(179, 33);
             this.itemNameTextBox.Name = "itemNameTextBox";
             this.itemNameTextBox.ReadOnly = true;
-            this.itemNameTextBox.Size = new System.Drawing.Size(168, 20);
-            this.itemNameTextBox.TabIndex = 4;
+            this.itemNameTextBox.Size = new System.Drawing.Size(111, 20);
+            this.itemNameTextBox.TabIndex = 14;
             // 
-            // itemListBox
+            // neighborsGroupBox
             // 
-            this.itemListBox.DataSource = this.itemsBindingSource;
-            this.itemListBox.DisplayMember = "Name";
-            this.itemListBox.FormattingEnabled = true;
-            this.itemListBox.Location = new System.Drawing.Point(0, 0);
-            this.itemListBox.Name = "itemListBox";
-            this.itemListBox.Size = new System.Drawing.Size(147, 316);
-            this.itemListBox.TabIndex = 3;
-            this.itemListBox.ValueMember = "Name";
+            this.neighborsGroupBox.Controls.Add(this.deleteNeighborButton);
+            this.neighborsGroupBox.Controls.Add(this.neighborsNameListBox);
+            this.neighborsGroupBox.Controls.Add(this.neighborNameLabel);
+            this.neighborsGroupBox.Controls.Add(this.neighborNametextBox);
+            this.neighborsGroupBox.Location = new System.Drawing.Point(3, 0);
+            this.neighborsGroupBox.Name = "neighborsGroupBox";
+            this.neighborsGroupBox.Size = new System.Drawing.Size(305, 314);
+            this.neighborsGroupBox.TabIndex = 2;
+            this.neighborsGroupBox.TabStop = false;
+            this.neighborsGroupBox.Text = "Neighbors";
             // 
-            // worldBindingSource
+            // deleteNeighborButton
             // 
-            this.worldBindingSource.DataSource = typeof(ZorkBuilder.Data.World);
+            this.deleteNeighborButton.Location = new System.Drawing.Point(87, 285);
+            this.deleteNeighborButton.Name = "deleteNeighborButton";
+            this.deleteNeighborButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteNeighborButton.TabIndex = 20;
+            this.deleteNeighborButton.Text = "&Delete";
+            this.deleteNeighborButton.UseVisualStyleBackColor = true;
+            this.deleteNeighborButton.Click += new System.EventHandler(this.DeleteNeighborButton_Click);
             // 
-            // openFileDialog
+            // neighborsNameListBox
             // 
-            this.openFileDialog.Filter = "World Files (*json)|*.json";
-            // 
-            // listOfNeighborsNamebindingSource
-            // 
-            this.listOfNeighborsNamebindingSource.DataMember = "ListOfNeighbors";
-            this.listOfNeighborsNamebindingSource.DataSource = this.roomsBindingSource;
-            // 
-            // NeighborsListGroupBox
-            // 
-            this.NeighborsListGroupBox.Controls.Add(this.neighborsListBox);
-            this.NeighborsListGroupBox.Location = new System.Drawing.Point(153, 148);
-            this.NeighborsListGroupBox.Name = "NeighborsListGroupBox";
-            this.NeighborsListGroupBox.Size = new System.Drawing.Size(170, 134);
-            this.NeighborsListGroupBox.TabIndex = 13;
-            this.NeighborsListGroupBox.TabStop = false;
-            this.NeighborsListGroupBox.Text = "List of Neighbors";
-            // 
-            // neighborsListBox
-            // 
-            this.neighborsListBox.DataSource = this.neighborsBindingSource;
-            this.neighborsListBox.DisplayMember = "Name";
-            this.neighborsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.neighborsListBox.FormattingEnabled = true;
-            this.neighborsListBox.Location = new System.Drawing.Point(3, 16);
-            this.neighborsListBox.Name = "neighborsListBox";
-            this.neighborsListBox.Size = new System.Drawing.Size(164, 115);
-            this.neighborsListBox.TabIndex = 0;
-            this.neighborsListBox.ValueMember = "Name";
+            this.neighborsNameListBox.DataSource = this.neighborsBindingSource;
+            this.neighborsNameListBox.DisplayMember = "Name";
+            this.neighborsNameListBox.FormattingEnabled = true;
+            this.neighborsNameListBox.Location = new System.Drawing.Point(4, 16);
+            this.neighborsNameListBox.Name = "neighborsNameListBox";
+            this.neighborsNameListBox.Size = new System.Drawing.Size(158, 264);
+            this.neighborsNameListBox.TabIndex = 18;
+            this.neighborsNameListBox.ValueMember = "Name";
             // 
             // neighborsBindingSource
             // 
             this.neighborsBindingSource.DataMember = "Neighbors";
             this.neighborsBindingSource.DataSource = this.worldViewModelBindingSource;
+            // 
+            // neighborNameLabel
+            // 
+            this.neighborNameLabel.AutoSize = true;
+            this.neighborNameLabel.Location = new System.Drawing.Point(177, 16);
+            this.neighborNameLabel.Name = "neighborNameLabel";
+            this.neighborNameLabel.Size = new System.Drawing.Size(35, 13);
+            this.neighborNameLabel.TabIndex = 17;
+            this.neighborNameLabel.Text = "Name";
+            // 
+            // neighborNametextBox
+            // 
+            this.neighborNametextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.neighborsBindingSource, "Name", true));
+            this.neighborNametextBox.Location = new System.Drawing.Point(177, 33);
+            this.neighborNametextBox.Name = "neighborNametextBox";
+            this.neighborNametextBox.ReadOnly = true;
+            this.neighborNametextBox.Size = new System.Drawing.Size(111, 20);
+            this.neighborNametextBox.TabIndex = 16;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "World Files (*json)|*.json";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "World files (*.json)|*.json";
             // 
             // MainForm
             // 
@@ -666,17 +682,20 @@
             this.welcomeTabPage.ResumeLayout(false);
             this.welcomeTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.worldViewModelBindingSource)).EndInit();
-            this.startLocationTabPage.ResumeLayout(false);
-            this.startLocationTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).EndInit();
             this.roomsTabPage.ResumeLayout(false);
             this.roomsTabPage.PerformLayout();
-            this.itemsTabPage.ResumeLayout(false);
-            this.itemsTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.worldBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listOfNeighborsNamebindingSource)).EndInit();
+            this.StartLocationGroupBox.ResumeLayout(false);
+            this.StartLocationGroupBox.PerformLayout();
             this.NeighborsListGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listOfNeighborsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).EndInit();
+            this.neighborLocationgroupBox.ResumeLayout(false);
+            this.neighborsItemsTabPage.ResumeLayout(false);
+            this.itemsGroupBox.ResumeLayout(false);
+            this.itemsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
+            this.neighborsGroupBox.ResumeLayout(false);
+            this.neighborsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.neighborsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -710,39 +729,40 @@
         private Controls.NeighborsControl southNeighborsControl;
         private Controls.NeighborsControl northNeighborsControl;
         private Controls.NeighborsControl eastNeighborsControl;
-        private System.Windows.Forms.TabPage itemsTabPage;
-        private System.Windows.Forms.Button itemDeleteButton;
-        private System.Windows.Forms.Button itemAddButton;
-        private System.Windows.Forms.Button itemEditButtom;
-        private System.Windows.Forms.Label weightLabel;
-        private System.Windows.Forms.TextBox weightTextBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox itemNameTextBox;
-        private System.Windows.Forms.ListBox itemListBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.BindingSource worldViewModelBindingSource;
-        private System.Windows.Forms.BindingSource roomsBindingSource;
-        private System.Windows.Forms.BindingSource itemsBindingSource;
         private System.Windows.Forms.Button roomSaveButton;
-        private System.Windows.Forms.Button itemSaveButton;
         private System.Windows.Forms.TabPage welcomeTabPage;
-        private System.Windows.Forms.TextBox newMessageTextBox;
-        private System.Windows.Forms.Label newMessageLabel;
         private System.Windows.Forms.Button welcomeMessageOkButton;
         private System.Windows.Forms.TextBox welcomMessageTextBox;
         private System.Windows.Forms.Label currentMessageLabel;
-        private System.Windows.Forms.TabPage startLocationTabPage;
-        private System.Windows.Forms.ListBox roomsListBox2;
-        private System.Windows.Forms.TextBox currentLocationTextBox;
-        private System.Windows.Forms.Label currenLocationLabel;
+        private System.Windows.Forms.TabPage neighborsItemsTabPage;
         private System.Windows.Forms.ToolStripMenuItem playToolStripMenuItem;
-        private System.Windows.Forms.BindingSource worldBindingSource;
         private System.Windows.Forms.Button welcomeMessageEditButton;
-        private System.Windows.Forms.BindingSource listOfNeighborsNamebindingSource;
         private System.Windows.Forms.GroupBox neighborLocationgroupBox;
         private System.Windows.Forms.GroupBox NeighborsListGroupBox;
         private System.Windows.Forms.ListBox neighborsListBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox StartLocationGroupBox;
+        private System.Windows.Forms.TextBox startLocationTextBox;
+        private System.Windows.Forms.BindingSource listOfNeighborsBindingSource;
+        private System.Windows.Forms.BindingSource roomsBindingSource;
+        private System.Windows.Forms.GroupBox itemsGroupBox;
+        private System.Windows.Forms.Button deleteItemButton;
+        private System.Windows.Forms.Button addItemButton;
+        private System.Windows.Forms.ListBox itemsListBox;
+        private System.Windows.Forms.BindingSource itemsBindingSource;
+        private System.Windows.Forms.Label itemWeightLabel;
+        private System.Windows.Forms.TextBox itemWeightextBox;
+        private System.Windows.Forms.Label itemNameLabel;
+        private System.Windows.Forms.TextBox itemNameTextBox;
+        private System.Windows.Forms.GroupBox neighborsGroupBox;
+        private System.Windows.Forms.Button deleteNeighborButton;
+        private System.Windows.Forms.ListBox neighborsNameListBox;
         private System.Windows.Forms.BindingSource neighborsBindingSource;
+        private System.Windows.Forms.Label neighborNameLabel;
+        private System.Windows.Forms.TextBox neighborNametextBox;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 

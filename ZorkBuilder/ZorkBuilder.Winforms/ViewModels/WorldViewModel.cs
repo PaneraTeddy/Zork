@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using ZorkBuilder.Data;
 
 namespace ZorkBuilder.Winforms.ViewModels
@@ -46,7 +48,33 @@ namespace ZorkBuilder.Winforms.ViewModels
                 }
             }
         }
+        public WorldViewModel(World world = null) => World = world;
+        public void SaveWorld()
+        {
+            if (string.IsNullOrEmpty(Filename))
+            {
+                throw new InvalidProgramException("Filename expected.");
+            }
 
+            JsonSerializer serializer = new JsonSerializer
+            {
+                Formatting = Formatting.Indented
+            };
+            using (StreamWriter streamWriter = new StreamWriter(Filename))
+            using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter))
+            {
+                serializer.Serialize(jsonWriter, mWorld);
+            }
+        }
+        public void RemoveNeighbors(Neighbors neighbors)
+        {
+            foreach (Room room in Rooms)
+            {
+                room.ListOfNeighbors.Remove(neighbors);
+            }
+
+            Neighbors.Remove(neighbors);
+        }
     }
 
 }
