@@ -43,6 +43,7 @@
             // 
             // neighborsComboBox
             // 
+            this.neighborsComboBox.DisplayMember = "Name";
             this.neighborsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.neighborsComboBox.FormattingEnabled = true;
             this.neighborsComboBox.Location = new System.Drawing.Point(0, 26);

@@ -6,19 +6,17 @@ namespace ZorkBuilder.Data
     public class World
     {
         public List<Room> Rooms{ get; set; }
-        public List<Neighbors> ListOfNeighbors { get; set; }
+        public List<Neighbors> Neighbors { get; set; }
         public List<Item> Items { get; set; }
         public Player player { get; set; }
 
         public string WelcomeMessage { get; set; }
 
-        private Room StartLocation { get; set; }
-
         public World()
         {
             Rooms = new List<Room>();
             Items = new List<Item>();
-            ListOfNeighbors = new List<Neighbors>();
+            Neighbors = new List<Neighbors>();
         }
 
         [OnDeserialized]
@@ -26,8 +24,8 @@ namespace ZorkBuilder.Data
         {
             foreach (Room room in Rooms)
             {
-                room.BuildListOfNeighborsFromNames(ListOfNeighbors);
-                room.BuildNeighborLocationFromNames(ListOfNeighbors);
+                room.BuildListOfNeighborsFromNames(Neighbors);
+                room.BuildNeighborLocationNamesFromNames(Neighbors);
             }
         }
     }

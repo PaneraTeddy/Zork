@@ -67,9 +67,16 @@ namespace ZorkBuilder.Winforms.Forms
             {
                 ViewModel.World = JsonConvert.DeserializeObject<World>(File.ReadAllText(openFileDialog.FileName));
                 ViewModel.Filename = openFileDialog.FileName;
+
+                Room selectedRoom = roomsListBox.SelectedItem as Room;
+                foreach (var control in mNeighborsControlMap.Values)
+                {
+                    control.Room = selectedRoom;
+                }
+
+                IsWorldLoaded = true;
             }
 
-            IsWorldLoaded = true;
         }
 
         #endregion
@@ -81,7 +88,9 @@ namespace ZorkBuilder.Winforms.Forms
                 if (addRoomForm.ShowDialog() == DialogResult.OK)
                 {
                     Room room = new Room { Name = addRoomForm.RoomName };
+                    Neighbors neighbors = new Neighbors { Name = addRoomForm.RoomName };
                     ViewModel.Rooms.Add(room);
+                    ViewModel.Neighbors.Add(neighbors);
                 }
             }
         }
@@ -96,7 +105,9 @@ namespace ZorkBuilder.Winforms.Forms
             if (MessageBox.Show("Delete this Room?", AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 ViewModel.Rooms.Remove((Room)roomsListBox.SelectedItem);
+                // ViewModel.Neighbors.Remove((Neighbors)roomsListBox.SelectedItem);
                 roomsListBox.SelectedItem = ViewModel.Rooms.FirstOrDefault();
+                
             }
         }
 

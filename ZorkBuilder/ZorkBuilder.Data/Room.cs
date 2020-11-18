@@ -1,101 +1,107 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ZorkBuilder.Data
 {
+    [JsonConverter(typeof(RoomConverter))]
     public class Room : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string Name { get; set; }
+
         public string Description { get; set; }
 
-        [JsonProperty(PropertyName = "ListOfNeighborsName")]
-        private List<string> ListOfNeighborsName { get; set; }
+        [JsonProperty(PropertyName = "ListOfNeighbors")]
+        private List<string> ListOfNeighborsNames { get; set; }
 
-        [JsonProperty(PropertyName = "NeighborDirection")]
-        private Dictionary<Directions, string> NeighborDirection { get; set; }
+        [JsonProperty(PropertyName = "NeighborLocations")]
+        private Dictionary<Directions, string> NeighborLocationNames { get; set; }
 
         [JsonIgnore]
-        public Dictionary<Directions, Neighbors> NeighborLocation { get; set; }
+        public Dictionary<Directions, Neighbors> NeighborLocations { get; set; }
 
         [JsonIgnore]
         public List<Neighbors> ListOfNeighbors { get; set; }
 
-        public Room(string name = null, string description = null, List<string> listOfNeighborsName = null, Dictionary<Directions, String> neighboDirection = null)
+
+
+        public Room(string name = null, string description = null, List<string> listOfNeighborsNames = null, Dictionary<Directions, String> neighborLocationNames = null)
         {
             Name = name;
             Description = description;
-            ListOfNeighborsName = listOfNeighborsName ?? new List<string>();
+            ListOfNeighborsNames = listOfNeighborsNames ?? new List<string>();
             ListOfNeighbors = new List<Neighbors>();
-            NeighborDirection = neighboDirection;
-            NeighborLocation = new Dictionary<Directions, Neighbors>();
-
-
+            NeighborLocationNames = neighborLocationNames;
+            NeighborLocations = new Dictionary<Directions, Neighbors>();
         }
+
         public void BuildListOfNeighborsFromNames(List<Neighbors> neighbors)
         {
-            ListOfNeighbors = (from neighborsName in ListOfNeighborsName
-                               let neighbor = neighbors.Find(i => i.Name.Equals(neighborsName, System.StringComparison.InvariantCultureIgnoreCase))
+            ListOfNeighbors = (from neighborName in ListOfNeighborsNames
+                               let neighbor = neighbors.Find(i => i.Name.Equals(neighborName, System.StringComparison.InvariantCultureIgnoreCase))
                                where neighbor != null
                                select neighbor).ToList();
 
-            ListOfNeighborsName.Clear();
+            ListOfNeighborsNames.Clear();
         }
 
-        public void BuildNeighborLocationFromNames(List<Neighbors> neighbors)
+        public void BuildNeighborLocationNamesFromNames(List<Neighbors> neighbors)
         {
-            ListOfNeighbors = (from neighborsName in ListOfNeighborsName
-                               let neighbor = neighbors.Find(i => i.Name.Equals(neighborsName, System.StringComparison.InvariantCultureIgnoreCase))
-                               where neighbor != null
-                               select neighbor).ToList();
+            NeighborLocations = (from entry in NeighborLocationNames
+                                 let neighbor = neighbors.Find(i => i.Name.Equals(entry.Value, System.StringComparison.InvariantCultureIgnoreCase))
+                                 where neighbor != null
+                                 select (EquipLocation: entry.Key, Neighbors: neighbor)).
+                          ToDictionary(pair => pair.EquipLocation, pair => pair.Neighbors);
 
-            ListOfNeighborsName.Clear();
+            NeighborLocationNames.Clear();
         }
 
-        public class RoomConverter : JsonConverter
-        {
-            public override bool CanConvert(Type objectType) => objectType.IsAssignableFrom(typeof(Room));
+        public override string ToString() => Name;
+    }
 
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    public class RoomConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType) => objectType.IsAssignableFrom(typeof(Room));
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            JObject jsonObject = JObject.Load(reader);
+
+            string name = jsonObject["Name"].Value<string>();
+            string description = jsonObject["Description"].Value<string>();
+            List<string> listOfNeighborsNames = jsonObject["ListOfNeighbors"].ToObject<List<string>>();
+
+            Dictionary<Directions, string> neighborLocationNames;
+            if (jsonObject.TryGetValue("NeighborLocations", out JToken neighborLocationNamesToken))
             {
-                JObject jsonObject = JObject.Load(reader);
-
-                string name = jsonObject["Name"].Value<string>();
-                string description = jsonObject["Description"].Value<string>();
-                List<string> listOfneighbornames = jsonObject["ListOfNeighbor"].ToObject<List<string>>();
-
-                Dictionary<Directions, string> neighborDirection;
-                if (jsonObject.TryGetValue("EquippedItems", out JToken neighborDirectionToken))
-                {
-                    neighborDirection = neighborDirectionToken.ToObject<Dictionary<Directions, string>>();
-                }
-                else
-                {
-                    neighborDirection = new Dictionary<Directions, string>();
-                }
-                return new Room(name, description, listOfneighbornames, neighborDirection);
+                neighborLocationNames = neighborLocationNamesToken.ToObject<Dictionary<Directions, string>>();
             }
-
-            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            else
             {
-                Room room = (Room)value;
-                JToken equippedItemNamesToken = JToken.FromObject(room.NeighborLocation.ToDictionary(pair => pair.Value.Name), serializer);
+                neighborLocationNames = new Dictionary<Directions, string>();
+            }
+            return new Room(name, description, listOfNeighborsNames, neighborLocationNames);
+        }
 
-                JObject roomObject = new JObject
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            Room player = (Room)value;
+            JToken neighborLocationNamesToken = JToken.FromObject(player.NeighborLocations.ToDictionary(pair => pair.Value.Name), serializer);
+
+            JObject playerObject = new JObject
             {
-                { nameof(Room.Name), room.Name },
-                { nameof(Room.Description), room.Description },
-                { nameof(Room.NeighborLocation), equippedItemNamesToken },
-                { nameof(Room.ListOfNeighbors), JToken.FromObject(room.ListOfNeighbors.Select(item => item.Name), serializer)},
+                { nameof(Room.Name), player.Name },
+                { nameof(Room.Description), player.Description },
+                { nameof(Room.NeighborLocations), neighborLocationNamesToken },
+                { nameof(Room.ListOfNeighbors), JToken.FromObject(player.ListOfNeighbors.Select(neighbor => neighbor.Name), serializer)},
             };
 
-                roomObject.WriteTo(writer);
-            }
+            playerObject.WriteTo(writer);
         }
     }
 }

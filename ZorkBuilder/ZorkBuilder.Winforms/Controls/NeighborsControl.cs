@@ -25,7 +25,7 @@ namespace ZorkBuilder.Winforms.Controls
                         neighborsComboBox.SelectedIndexChanged -= NeighborsComboBox_SelectedIndexChanged;
 
                         neighborsComboBox.DataSource = listofneigbors;
-                        NeighborsName = mRoom.NeighborLocation.TryGetValue(Directions, out Neighbors neighborLocation) ? neighborLocation : NoItem;
+                        NeighborsName = mRoom.NeighborLocations.TryGetValue(Directions, out Neighbors neighborLocation) ? neighborLocation : NoItem;
 
                         neighborsComboBox.SelectedIndexChanged += NeighborsComboBox_SelectedIndexChanged;
 
@@ -66,11 +66,11 @@ namespace ZorkBuilder.Winforms.Controls
                 Neighbors neighborsName = NeighborsName;
                 if (neighborsName == NoItem)
                 {
-                    mRoom.NeighborLocation.Remove(Directions);
+                    mRoom.NeighborLocations.Remove(Directions);
                 }
                 else
                 {
-                    mRoom.NeighborLocation[Directions] = neighborsName;
+                    mRoom.NeighborLocations[Directions] = neighborsName;
                 }
             }
 
